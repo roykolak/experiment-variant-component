@@ -1,0 +1,12 @@
+{
+  "name": "experiment-variant-component",
+  "version": "0.0.1",
+  "homepage": "https://github.com/roykolak/experiment-variant-component",
+  "authors": [
+    "Roy Kolak <roy.kolak@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "polymer": "~1.0.3"
+  }
+}

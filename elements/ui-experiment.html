@@ -17,17 +17,21 @@
 <script>
   Polymer({
     is: "ui-experiment",
+
     properties: {
       variant: String
     },
+
     variants: function() {
       return Polymer.dom(this).querySelectorAll('ui-variant');
     },
+
     randomlySelect: function(things) {
       var numberOfthings = things.length;
       var index = Math.round(Math.random() * ((numberOfthings - 1) - 0) + 0);
       return things[index];
     },
+
     attached: function() {
       var variantEl;
       if(this.variant) {
@@ -38,9 +42,11 @@
       this.showVariant(variantEl);
       this.logVariantView(variantEl);
     },
+
     showVariant: function(variantEl) {
       variantEl.style.display = 'block';
     },
+    
     logVariantView: function(variantEl) {
       console.log('Log variant view on the server: ', variantEl.id);
     }
