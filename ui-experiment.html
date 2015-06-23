@@ -1,0 +1,52 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="ui-experiment">
+  <style>
+    :host {
+      display: block;
+    }
+    :host ::content ui-variant {
+      display: none;
+    }
+  </style>
+  <template>
+    <content></content>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "ui-experiment",
+    properties: {
+      variant: String
+    },
+    loadVariants: function() {
+      var uiVariants = Polymer.dom(this).querySelectorAll('ui-variant');
+      return uiVariants.map(function(uiVariant) {
+        return uiVariant.id;
+      });
+    },
+    randomlySelectVariant: function(variants) {
+      var numberOfVariants = variants.length;
+      var index = Math.round(Math.random() * ((numberOfVariants - 1) - 0) + 0);
+      return variants[index];
+    },
+    attached: function() {
+      var variant;
+      if(this.variant) {
+        variant = this.variant;
+      } else {
+        var variants = this.loadVariants();
+        variant = this.randomlySelectVariant(variants);
+      }
+      this.showVariant(variant);
+      this.logVariantView(variant);
+    },
+    showVariant: function(variant) {
+      Polymer.dom(this).querySelector('#' + variant).style.display = 'block';
+    },
+    logVariantView: function(variant) {
+      console.log('Log variant view on the server: ', variant);
+    }
+  });
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.5/webcomponents-lite.min.js"></script>
+    <link rel="import" href="ui-experiment.html">
+    <link rel="import" href="ui-variant.html">
+  </head>
+  <body>
+    <div>
+      <p>Hardcoded variant</p>
+      <ui-experiment variant="control">
+        <ui-variant id="control">
+          <h3>Control</h3>
+        </ui-variant>
+        <ui-variant id="variant1">
+          <h3>Variant 1</h3>
+        </ui-variant>
+      </ui-experiment>
+    </div>
+    <div>
+      <p>Random variant</p>
+      <ui-experiment>
+        <ui-variant id="control">
+          <h3>Control</h3>
+        </ui-variant>
+        <ui-variant id="variant1">
+          <h3>Variant 1</h3>
+        </ui-variant>
+        <ui-variant id="variant2">
+          <h3>Variant 2</h3>
+        </ui-variant>
+      </ui-experiment>
+    </div>
+  </body>
+</html>
