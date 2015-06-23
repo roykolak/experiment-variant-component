@@ -20,33 +20,29 @@
     properties: {
       variant: String
     },
-    loadVariants: function() {
-      var uiVariants = Polymer.dom(this).querySelectorAll('ui-variant');
-      return uiVariants.map(function(uiVariant) {
-        return uiVariant.id;
-      });
+    variants: function() {
+      return Polymer.dom(this).querySelectorAll('ui-variant');
     },
-    randomlySelectVariant: function(variants) {
-      var numberOfVariants = variants.length;
-      var index = Math.round(Math.random() * ((numberOfVariants - 1) - 0) + 0);
-      return variants[index];
+    randomlySelect: function(things) {
+      var numberOfthings = things.length;
+      var index = Math.round(Math.random() * ((numberOfthings - 1) - 0) + 0);
+      return things[index];
     },
     attached: function() {
-      var variant;
+      var variantEl;
       if(this.variant) {
-        variant = this.variant;
+        variantEl = Polymer.dom(this).querySelector('#' + this.variant);
       } else {
-        var variants = this.loadVariants();
-        variant = this.randomlySelectVariant(variants);
+        variantEl = this.randomlySelect(this.variants());
       }
-      this.showVariant(variant);
-      this.logVariantView(variant);
+      this.showVariant(variantEl);
+      this.logVariantView(variantEl);
     },
-    showVariant: function(variant) {
-      Polymer.dom(this).querySelector('#' + variant).style.display = 'block';
+    showVariant: function(variantEl) {
+      variantEl.style.display = 'block';
     },
-    logVariantView: function(variant) {
-      console.log('Log variant view on the server: ', variant);
+    logVariantView: function(variantEl) {
+      console.log('Log variant view on the server: ', variantEl.id);
     }
   });
 </script>
